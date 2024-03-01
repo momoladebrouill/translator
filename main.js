@@ -1,12 +1,14 @@
 
 let b = [];
-
-var req = fetch('./data2.json')
+!async function() {
+let  req = await fetch('./data2.json')
     .then((response) => response.json())
-    .then((data) => data)
-// get data from request
-let data = req;
-console.log(data);
+    .then((data) => {return data;})
+    .catch(error => {
+        console.error(error);
+    });
+    b = req;
+}();
 
 // toma b part
 document.getElementById('button').addEventListener('click', function() {
@@ -18,20 +20,19 @@ document.getElementById('button').addEventListener('click', function() {
 //generé pas copilot
 function ckoalafonction(value) {
     let translated = '';
-    console.log(value);
-    let data = req;
+    // do a callback to get data from request
+    let data = b;
     for (let i = 0; i < value.length; i++) {
-        for(elem in data){
-            console.log("elem");
-            console.log(elem);
-            done = false;
-            if (value[i] === elem['nom'][0]|| value[i] === 'A') {
-                translated += elem['nom'];
+        done = false;
+        for(let j = 0; j < data.length; j++){
+            let elem = data[j];
+            if (value[i].toUpperCase() === elem['nom'][0]) {
+                translated += elem['grek'];
                 done = true;
             }
-            if(done == false){
-                translated += value[i];
-            }
+        }
+        if(done == false){
+            translated += value[i];
         }
     }
     return translated;
