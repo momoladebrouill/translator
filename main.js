@@ -1,5 +1,5 @@
 
-let b = [];
+let lignes = [];
 !async function() {
 let  req = await fetch('./data2.json')
     .then((response) => response.json())
@@ -7,7 +7,7 @@ let  req = await fetch('./data2.json')
     .catch(error => {
         console.error(error);
     });
-    b = req;
+    lignes = req;
 }();
 
 // toma b part
@@ -20,14 +20,12 @@ document.getElementById('button').addEventListener('click', function() {
 //generé pas copilot
 function ckoalafonction(value) {
     let translated = '';
-    // do a callback to get data from request
-    let data = b;
     for (let i = 0; i < value.length; i++) {
         done = false;
-        for(let j = 0; j < data.length; j++){
-            let elem = data[j];
-            if (value[i].toUpperCase() === elem['nom'][0]) {
-                translated += elem['grek'];
+        for(let j = 0; j < lignes.length; j++){
+            let tr = lignes[j];
+            if (value[i].toUpperCase() === tr['nom'][0]) {
+                translated += tr['grek'];
                 done = true;
             }
         }
