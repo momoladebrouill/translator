@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>main</title>
-    <style>
-        #input, #button, #output {
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
+    <title>the translator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
 </head>
 <body>
-    <input id="input" type="text">
-    <p class="content"></p>
-    <button id="button">Click me</button>
-    <div id="output"></div>
+    <div id="truc">
+    <h1>The universal translator</h1>
+    <p>Entrez votre texte à traduire</p>
+    <textarea id="input" type="text">Bonum Somnum Laedificat Cor Hominis</textarea>
+    <p>Choisissez votre encodage de destination</p>
+    <select name="pets" id="destination-selector">
+        <option value="grek">Grek</option>
+        <option value="code">chiffre</option>
+        <option value="nom">Dieux</option>
+    </select>
+    <button id="translate">Traduire ! </button>
+    <div id="rendu">
+      <div id="output"></div>
+      <button onclick="coppyy()">copier dans le presse-citron</button>
+    </div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
